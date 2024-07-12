@@ -18,25 +18,18 @@ public class Projeto {
 	
 	private Date anoConclusao;
 	private String cidadeAtual;
-	private Projeto projetos;
 	
     @ManyToOne
     @JoinColumn(name = "estudante_id")
     private Estudante estudante;
-    
-    @OneToOne
-    @JoinColumn(name = "curso_id")
-    private Curso curso;
+
 
 	public Projeto() {
 	}
 
-	public Projeto(Date anoConclusao, String cidadeAtual, Projeto projetos, Estudante estudante, Curso curso) {
+	public Projeto(Date anoConclusao, String cidadeAtual, Projeto projetos) {
 		this.anoConclusao = anoConclusao;
 		this.cidadeAtual = cidadeAtual;
-		this.projetos = projetos;
-		this.estudante = estudante;
-		this.curso = curso;
 	}
 
 	public long getId() {
@@ -63,13 +56,6 @@ public class Projeto {
 		this.cidadeAtual = cidadeAtual;
 	}
 
-	public Projeto getProjetos() {
-		return projetos;
-	}
-
-	public void setProjetos(Projeto projetos) {
-		this.projetos = projetos;
-	}
 
 	public Estudante getEstudante() {
 		return estudante;
@@ -79,11 +65,4 @@ public class Projeto {
 		this.estudante = estudante;
 	}
 
-	public Curso getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
 }

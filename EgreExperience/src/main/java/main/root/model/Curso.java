@@ -21,12 +21,7 @@ public class Curso {
 	
 	private String nome;
 	private String modalidade;
-	
-    @OneToOne(mappedBy = "curso", cascade = CascadeType.ALL)
-    private Estudante estudante;
     
-    @OneToOne(mappedBy = "curso")
-    private Projeto projeto;
     
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
     private List<CursoPos> cursosPos = new ArrayList<>();
@@ -37,9 +32,6 @@ public class Curso {
 	public Curso(String nome, String modalidade, Estudante estudante, Projeto projeto, List<CursoPos> cursosPos) {
 		this.nome = nome;
 		this.modalidade = modalidade;
-		this.estudante = estudante;
-		this.projeto = projeto;
-		this.cursosPos = cursosPos;
 	}
 
 	public long getId() {

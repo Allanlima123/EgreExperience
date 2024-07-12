@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.annotations.ManyToAny;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.CascadeType;
@@ -28,20 +30,14 @@ public class Estudante {
 	private String Foto;
 	private String email;
 	
-	@OneToOne(mappedBy = "estudante")
+	@ManyToOne
 	private Perfil perfil;
 	
-    @OneToOne(mappedBy = "estudante")
+	@ManyToOne
     private Cadastro cadastro;
     
-    @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL)
-    private List<Projeto> projetos = new ArrayList<>();
-    
-    @OneToMany(mappedBy = "estudante", cascade = CascadeType.ALL)
-    private List<Emprego> empregos = new ArrayList<>();
-    
-    @OneToOne
     @JoinColumn(name = "curso_id")
+    @ManyToOne
     private Curso curso;
 	
 	public Estudante() {
@@ -49,14 +45,12 @@ public class Estudante {
 
 	
 	public Estudante(Date anoFormacao, String foto, String email, Perfil perfil, Cadastro cadastro,
-			List<Projeto> projetos, List<Emprego> empregos, Curso curso) {
+			List<Projeto> projetos, Curso curso) {
 		this.anoFormacao = anoFormacao;
 		Foto = foto;
 		this.email = email;
 		this.perfil = perfil;
 		this.cadastro = cadastro;
-		this.projetos = projetos;
-		this.empregos = empregos;
 		this.curso = curso;
 	}
 
@@ -118,26 +112,6 @@ public class Estudante {
 
 	public void setCadastro(Cadastro cadastro) {
 		this.cadastro = cadastro;
-	}
-
-
-	public List<Projeto> getProjetos() {
-		return projetos;
-	}
-
-
-	public void setProjetos(List<Projeto> projetos) {
-		this.projetos = projetos;
-	}
-
-
-	public List<Emprego> getEmpregos() {
-		return empregos;
-	}
-
-
-	public void setEmpregos(List<Emprego> empregos) {
-		this.empregos = empregos;
 	}
 
 
