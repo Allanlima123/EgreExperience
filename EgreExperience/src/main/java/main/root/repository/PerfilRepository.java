@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 
 import main.root.model.Perfil;
 
-
 @Repository
 public interface PerfilRepository extends JpaRepository<Perfil, Long>{}
