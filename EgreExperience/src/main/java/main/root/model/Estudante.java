@@ -11,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
@@ -25,7 +27,6 @@ public class Estudante {
 	private Date anoFormacao;
     
 	private String Foto;
-	private String email;
 	private String nome;
 	
 	@JoinColumn(name = "perfil_id")
@@ -35,6 +36,14 @@ public class Estudante {
 	@JoinColumn(name = "cadastro_id")
 	@ManyToOne
     private Cadastro cadastro;
+	
+    @ManyToMany
+    @JoinTable(
+        name = "participacao",
+        joinColumns = @JoinColumn(name = "estudante_id"),
+        inverseJoinColumns = @JoinColumn(name = "projeto_id")
+    )
+    private List<Projeto> projetos;
     
     @JoinColumn(name = "curso_id")
     @ManyToOne

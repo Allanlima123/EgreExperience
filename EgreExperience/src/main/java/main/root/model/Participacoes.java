@@ -16,8 +16,17 @@ public class Participacoes {
 	private long id;
 	
 	private String tipo;
+	private String papel;
 	
     @ManyToOne
     @JoinColumn(name = "emprego_id")
     private Emprego emprego;
+    
+    @ManyToOne
+    @JoinColumn(name = "estudante_id")
+    private Estudante estudante;
+
+    @ManyToOne
+    @JoinColumn(name = "projeto_id")
+    private Projeto projeto;
 }

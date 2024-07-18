@@ -19,7 +19,8 @@ public class CursoPos {
 	
 	private String local;
 	private String modalidade;
-	private Date ano;
+	private Date anoInicio;
+	private Date anoConclusao;
 	private String ch;
 	
     @ManyToOne

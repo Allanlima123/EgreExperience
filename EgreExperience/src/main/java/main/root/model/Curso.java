@@ -1,5 +1,7 @@
 package main.root.model;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,4 +17,6 @@ public class Curso {
 	
 	private String nome;
 	private String modalidade;
+	private Date anoInicio;
+	private Date anoConclusao;
 }
