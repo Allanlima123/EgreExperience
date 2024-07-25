@@ -14,7 +14,7 @@ import main.root.service.PerfilService;
 
 
 @RestController
-@RequestMapping("/perfil")
+@RequestMapping("perfil")
 public class PerfilController {
 	
 	@Autowired
@@ -23,8 +23,8 @@ public class PerfilController {
 	@PostMapping
 	public ResponseEntity<Perfil> addPerfil(@RequestBody Perfil perfil) {
 		try {
-			Perfil savedPerfil = perfilService.salvarPerfil(perfil);
-			return new ResponseEntity<>(savedPerfil, HttpStatus.CREATED);
+			Perfil salvarPerfil = perfilService.salvarPerfil(perfil);
+			return new ResponseEntity<>(salvarPerfil, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
