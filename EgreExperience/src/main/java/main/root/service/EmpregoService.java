@@ -9,13 +9,42 @@ import main.root.repository.EmpregoRepository;
 @Service
 public class EmpregoService {
 	@Autowired
-	EmpregoRepository EmpregoRepository;
-	
+	EmpregoRepository empregoRepository;
+
 	public Emprego salvarEmprego(Emprego emprego) {
 		try {
-			return EmpregoRepository.save(emprego);
+			return empregoRepository.save(emprego);
 		} catch (Exception e) {
 			throw new RuntimeException("Falha ao salvar o perfil", e);
+		}
+	}
+
+	public Emprego atualizarEmprego(long id, Emprego empregoAtualizado) {
+		if (!empregoRepository.existsById(id)) {
+			throw new RuntimeException("Emprego não encontrado com o ID: " + id);
+		}
+
+		Emprego empregoExistente = empregoRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Emprego não encontrado com o ID: " + id));
+
+		empregoExistente.setEmpresa(empregoAtualizado.getEmpresa());
+		empregoExistente.setRemoto(empregoAtualizado.getRemoto());
+		empregoExistente.setCargo(empregoAtualizado.getCargo());
+		empregoExistente.setTempo(empregoAtualizado.getTempo());
+		empregoExistente.setEstudante(empregoAtualizado.getEstudante());
+
+		return empregoRepository.save(empregoExistente);
+	}
+
+	public void deleteEmprego(long id) {
+		try {
+			if (empregoRepository.existsById(id)) {
+				empregoRepository.deleteById(id);
+			} else {
+				throw new RuntimeException("Emprego não encontrado com o ID: " + id);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao deletar o Emprego com o ID: " + id, e);
 		}
 	}
 }

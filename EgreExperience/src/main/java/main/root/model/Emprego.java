@@ -1,17 +1,11 @@
 package main.root.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import lombok.Data;
 
 @Entity
 public class Emprego {
@@ -27,23 +21,18 @@ public class Emprego {
     @ManyToOne
     @JoinColumn(name = "estudante_id")
     private Estudante estudante;
-    
-    @OneToMany(mappedBy = "emprego", cascade = CascadeType.ALL)
-    private List<Participacoes> participacoes = new ArrayList<>();
 
 	public Emprego() {
 		super();
 	}
 
-	public Emprego(String empresa, Boolean remoto, String cargo, String tempo, Estudante estudante,
-			List<Participacoes> participacoes) {
+	public Emprego(String empresa, Boolean remoto, String cargo, String tempo, Estudante estudante) {
 		super();
 		this.empresa = empresa;
 		this.remoto = remoto;
 		this.cargo = cargo;
 		this.tempo = tempo;
 		this.estudante = estudante;
-		this.participacoes = participacoes;
 	}
 
 
@@ -94,13 +83,5 @@ public class Emprego {
 
 	public void setEstudante(Estudante estudante) {
 		this.estudante = estudante;
-	}
-
-	public List<Participacoes> getParticipacoes() {
-		return participacoes;
-	}
-
-	public void setParticipacoes(List<Participacoes> participacoes) {
-		this.participacoes = participacoes;
 	}
 }

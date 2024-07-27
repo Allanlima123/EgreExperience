@@ -6,7 +6,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
 
 @Entity
 public class Participacoes {
@@ -16,10 +15,6 @@ public class Participacoes {
 
 	private String tipo;
 	private String papel;
-
-	@ManyToOne
-	@JoinColumn(name = "emprego_id")
-	private Emprego emprego;
 
 	@ManyToOne
 	@JoinColumn(name = "estudante_id")
@@ -33,11 +28,10 @@ public class Participacoes {
 		super();
 	}
 
-	public Participacoes(String tipo, String papel, Emprego emprego, Estudante estudante, Projeto projeto) {
+	public Participacoes(String tipo, String papel, Estudante estudante, Projeto projeto) {
 		super();
 		this.tipo = tipo;
 		this.papel = papel;
-		this.emprego = emprego;
 		this.estudante = estudante;
 		this.projeto = projeto;
 	}
@@ -64,14 +58,6 @@ public class Participacoes {
 
 	public void setPapel(String papel) {
 		this.papel = papel;
-	}
-
-	public Emprego getEmprego() {
-		return emprego;
-	}
-
-	public void setEmprego(Emprego emprego) {
-		this.emprego = emprego;
 	}
 
 	public Estudante getEstudante() {

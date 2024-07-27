@@ -1,16 +1,13 @@
 package main.root.model;
 
 import java.util.Date;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
 
 @Entity
 public class Projeto {
@@ -26,9 +23,6 @@ public class Projeto {
 
 	private String cidadeAtual;
 
-	@ManyToMany(mappedBy = "projetos")
-	private List<Estudante> estudantes;
-
 	@ManyToOne
 	@JoinColumn(name = "estudante_id")
 	private Estudante estudante;
@@ -37,15 +31,13 @@ public class Projeto {
 		super();
 	}
 
-	public Projeto(String nome, String descricao, Date anoInicio, Date anoConclusao, String cidadeAtual,
-			List<Estudante> estudantes, Estudante estudante) {
+	public Projeto(String nome, String descricao, Date anoInicio, Date anoConclusao, String cidadeAtual, Estudante estudante) {
 		super();
 		this.nome = nome;
 		this.descricao = descricao;
 		this.anoInicio = anoInicio;
 		this.anoConclusao = anoConclusao;
 		this.cidadeAtual = cidadeAtual;
-		this.estudantes = estudantes;
 		this.estudante = estudante;
 	}
 
@@ -95,14 +87,6 @@ public class Projeto {
 
 	public void setCidadeAtual(String cidadeAtual) {
 		this.cidadeAtual = cidadeAtual;
-	}
-
-	public List<Estudante> getEstudantes() {
-		return estudantes;
-	}
-
-	public void setEstudantes(List<Estudante> estudantes) {
-		this.estudantes = estudantes;
 	}
 
 	public Estudante getEstudante() {

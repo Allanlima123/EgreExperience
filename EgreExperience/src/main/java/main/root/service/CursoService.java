@@ -18,7 +18,7 @@ public class CursoService {
         try {
             return cursoRepository.findAll();
         } catch (Exception e) {
-            throw new RuntimeException("Falha ao buscar todos os cursos com cursoPos", e);
+            throw new RuntimeException("Falha ao buscar todos os cursos com curso", e);
         }
     }
 

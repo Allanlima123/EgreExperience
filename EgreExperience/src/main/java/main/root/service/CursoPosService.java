@@ -15,7 +15,7 @@ public class CursoPosService {
 		try {
 			return cursoPosRepository.save(cursoPos);
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao salvar o perfil", e);
+			throw new RuntimeException("Falha ao salvar o CursoPos", e);
 		}
 	}
 	
@@ -25,7 +25,7 @@ public class CursoPosService {
         }
 
         CursoPos cursoPosExistente = cursoPosRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Curso não encontrado com o ID: " + id));
+            .orElseThrow(() -> new RuntimeException("CursoPos não encontrado com o ID: " + id));
 
         cursoPosExistente.setLocal(cursoPosAtualizado.getLocal());
         cursoPosExistente.setModalidade(cursoPosAtualizado.getModalidade());
@@ -42,10 +42,10 @@ public class CursoPosService {
 			if (cursoPosRepository.existsById(id)) {
 				cursoPosRepository.deleteById(id);
 			} else {
-				throw new RuntimeException("Curso não encontrado com o ID: " + id);
+				throw new RuntimeException("CursoPos não encontrado com o ID: " + id);
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao deletar o Curso com o ID: " + id, e);
+			throw new RuntimeException("Falha ao deletar o CursoPos com o ID: " + id, e);
 		}
 	}
 }
