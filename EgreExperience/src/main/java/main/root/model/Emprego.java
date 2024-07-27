@@ -13,7 +13,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
 
-@Data
 @Entity
 public class Emprego {
 	@Id
@@ -31,4 +30,77 @@ public class Emprego {
     
     @OneToMany(mappedBy = "emprego", cascade = CascadeType.ALL)
     private List<Participacoes> participacoes = new ArrayList<>();
+
+	public Emprego() {
+		super();
+	}
+
+	public Emprego(String empresa, Boolean remoto, String cargo, String tempo, Estudante estudante,
+			List<Participacoes> participacoes) {
+		super();
+		this.empresa = empresa;
+		this.remoto = remoto;
+		this.cargo = cargo;
+		this.tempo = tempo;
+		this.estudante = estudante;
+		this.participacoes = participacoes;
+	}
+
+
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
+	}
+
+	public Boolean getRemoto() {
+		return remoto;
+	}
+
+	public void setRemoto(Boolean remoto) {
+		this.remoto = remoto;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	public String getTempo() {
+		return tempo;
+	}
+
+	public void setTempo(String tempo) {
+		this.tempo = tempo;
+	}
+
+	public Estudante getEstudante() {
+		return estudante;
+	}
+
+	public void setEstudante(Estudante estudante) {
+		this.estudante = estudante;
+	}
+
+	public List<Participacoes> getParticipacoes() {
+		return participacoes;
+	}
+
+	public void setParticipacoes(List<Participacoes> participacoes) {
+		this.participacoes = participacoes;
+	}
 }
