@@ -1,5 +1,7 @@
 package main.root.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,14 @@ import main.root.repository.EmpregoRepository;
 public class EmpregoService {
 	@Autowired
 	EmpregoRepository empregoRepository;
+	
+    public List<Emprego> buscarTodosempregos() {
+        try {
+            return empregoRepository.findAll();
+        } catch (Exception e) {
+            throw new RuntimeException("Falha ao buscar todos os empregos com emprego", e);
+        }
+    }
 
 	public Emprego salvarEmprego(Emprego emprego) {
 		try {
