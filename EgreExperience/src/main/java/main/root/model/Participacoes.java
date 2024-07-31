@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
@@ -23,4 +22,7 @@ public class Participacoes {
 
 	@ManyToOne
 	private Projeto projeto;
+	
+	
+	//OBS: participacoes estar com problema
 }

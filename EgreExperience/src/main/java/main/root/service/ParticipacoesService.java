@@ -17,7 +17,7 @@ public class ParticipacoesService {
 		try {
 			return participacoesRepository.findAll();
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao buscar todos os participacoess com participacoes", e);
+			throw new RuntimeException("Falha ao buscar todos os participacoes com participacoes", e);
 		}
 	}
 
