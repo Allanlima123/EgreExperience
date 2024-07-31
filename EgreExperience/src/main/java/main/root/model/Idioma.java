@@ -1,0 +1,19 @@
+package main.root.model;
+
+public enum Idioma {
+    INGLES,
+    ESPANHOL,
+    PORTUGUES,
+    FRANCES,
+    ALEMAO,
+    ITALIANO,
+    CHINES,
+    JAPONES,
+    RUSSO,
+    ARABE,
+    HINDI,
+    COREANO,
+    TURCO,
+    HOLANDES,
+    POLONES
+}

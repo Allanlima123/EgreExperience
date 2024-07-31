@@ -1,15 +1,23 @@
 package main.root.model;
 
 import java.util.Date;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
 
+@Data
 @Entity
 public class Estudante {
 	@Id
@@ -22,72 +30,20 @@ public class Estudante {
 	private String foto;
 	private String nome;
 
-	@JoinColumn(name = "perfil_id")
+    @ElementCollection
+    @Enumerated(EnumType.STRING)
+    private List<Idioma> idiomas;
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Habilidade> habilidades;
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Emprego> empregos;
+
 	@ManyToOne
 	private Perfil perfil;
 
-	@JoinColumn(name = "curso_id")
-	@ManyToOne
-	private Curso curso;
+	@OneToMany
+	private List<Curso> cursos;
 
-	public Estudante() {
-		super();
-	}
-
-	public Estudante(Date anoFormacao, String foto, String nome, Perfil perfil, Curso curso) {
-		super();
-		this.anoFormacao = anoFormacao;
-		this.foto = foto;
-		this.nome = nome;
-		this.perfil = perfil;
-		this.curso = curso;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public Date getAnoFormacao() {
-		return anoFormacao;
-	}
-
-	public void setAnoFormacao(Date anoFormacao) {
-		this.anoFormacao = anoFormacao;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public Perfil getPerfil() {
-		return perfil;
-	}
-
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
-	}
-
-	public Curso getCurso() {
-		return curso;
-	}
-
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
 }

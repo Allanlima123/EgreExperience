@@ -31,7 +31,7 @@ public class EmpregoService {
 		empregoExistente.setRemoto(empregoAtualizado.getRemoto());
 		empregoExistente.setCargo(empregoAtualizado.getCargo());
 		empregoExistente.setTempo(empregoAtualizado.getTempo());
-		empregoExistente.setEstudante(empregoAtualizado.getEstudante());
+		empregoExistente.setDescricaoProficional(empregoAtualizado.getDescricaoProficional());
 
 		return empregoRepository.save(empregoExistente);
 	}
