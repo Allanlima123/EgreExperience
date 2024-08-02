@@ -22,7 +22,4 @@ public class Participacoes {
 
 	@ManyToOne
 	private Projeto projeto;
-	
-	
-	//OBS: participacoes estar com problema
 }
