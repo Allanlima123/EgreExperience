@@ -27,6 +27,16 @@ public class ProjetoController {
     public List<Projeto> listarProjetos() {
         return projetoService.buscarTodosProjetos();
     }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<Projeto> buscarProjetoPorId(@PathVariable int id) {
+    	Projeto projeto = projetoService.buscarPorId(id);
+        if (projeto != null) {
+            return new ResponseEntity<>(projeto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 	
 	@PostMapping
 	public ResponseEntity<Projeto> addProjeto(@RequestBody Projeto projeto) {

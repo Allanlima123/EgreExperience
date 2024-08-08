@@ -7,21 +7,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-
 @Data
 @Entity
 public class Emprego {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	private String empresa;
 	private Boolean remoto;
 	private String cargo;
 	private String tempo;
-	
+
 	@Column(length = 500)
 	private String descricaoProficional;
-
-	
 }

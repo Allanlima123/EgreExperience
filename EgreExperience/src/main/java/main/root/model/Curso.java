@@ -20,6 +20,4 @@ public class Curso {
 	private Date anoInicio;
 	private Date anoConclusao;
 	private long ch;
-	
-	//Um pergunta: Sera melhor colocar o nome da Universidade?
 }

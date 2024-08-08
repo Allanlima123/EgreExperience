@@ -1,15 +1,21 @@
 package main.root.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import main.root.model.Estudante;
 import main.root.service.EstudanteService;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("estudante")
@@ -26,16 +32,21 @@ public class EstudanteController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    
+	@GetMapping
+	public List<Estudante> listarEstudantes() {
+		return estudanteService.obterTodosEstudantes();
+	}
 
-    @GetMapping
-    public ResponseEntity<List<Estudante>> getAllEstudantes() {
-        try {
-            List<Estudante> estudantes = estudanteService.obterTodosEstudantes();
-            return new ResponseEntity<>(estudantes, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Estudante>> getAllEstudantes() {
+//        try {
+//            List<Estudante> estudantes = estudanteService.obterTodosEstudantes();
+//            return new ResponseEntity<>(estudantes, HttpStatus.OK);
+//        } catch (Exception e) {
+//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Estudante> getEstudanteById(@PathVariable Long id) {

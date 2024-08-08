@@ -30,9 +30,9 @@ public class Estudante {
 	private String foto;
 	private String nome;
 
-    @ElementCollection
-    @Enumerated(EnumType.STRING)
-    private List<Idioma> idiomas;
+	@ElementCollection
+	@Enumerated(EnumType.STRING)
+	private List<Idioma> idiomas;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Habilidade> habilidades;

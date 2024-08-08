@@ -21,6 +21,15 @@ public class ProjetoService {
 		}
 	}
 
+	public Projeto buscarPorId(long id) {
+		try {
+			return projetoRepository.findById(id)
+					.orElseThrow(() -> new RuntimeException("Projeto não encontrado com o ID: " + id));
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao buscar projeto com o ID: " + id, e);
+		}
+	}
+
 	public List<Projeto> buscarTodosProjetos() {
 		try {
 			return projetoRepository.findAll();
@@ -31,7 +40,7 @@ public class ProjetoService {
 
 	public Projeto atualizarProjeto(long id, Projeto projetoAtualizado) {
 		if (!projetoRepository.existsById(id)) {
-			throw new RuntimeException("Curso não encontrado com o ID: " + id);
+			throw new RuntimeException("Projeto não encontrado com o ID: " + id);
 		}
 
 		Projeto projetoExistente = projetoRepository.findById(id)
@@ -51,10 +60,10 @@ public class ProjetoService {
 			if (projetoRepository.existsById(id)) {
 				projetoRepository.deleteById(id);
 			} else {
-				throw new RuntimeException("Curso não encontrado com o ID: " + id);
+				throw new RuntimeException("Projeto não encontrado com o ID: " + id);
 			}
 		} catch (Exception e) {
-			throw new RuntimeException("Falha ao deletar o Curso com o ID: " + id, e);
+			throw new RuntimeException("Falha ao deletar o Projeto com o ID: " + id, e);
 		}
 	}
 
