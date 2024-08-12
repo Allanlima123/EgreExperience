@@ -59,6 +59,10 @@ public class ProjetoService {
 			throw new RuntimeException("Falha ao salvar o Curso", e);
 		}
 	}
+	
+    public List<Projeto> buscarProjetosPorEstudante(Long estudanteId) {
+        return projetoRepository.findByEstudanteId(estudanteId);
+    }
 
 
 //    public Projeto atualizarProjeto(long id, Projeto projetoAtualizado) {

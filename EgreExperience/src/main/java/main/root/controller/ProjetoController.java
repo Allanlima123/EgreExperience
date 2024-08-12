@@ -41,6 +41,11 @@ public class ProjetoController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    @GetMapping("/estudante/{id}")
+    public List<Projeto> getProjetosPorEstudante(@PathVariable("id") Long estudanteId) {
+        return projetoService.buscarProjetosPorEstudante(estudanteId);
+    }
 	
     
 //    @PutMapping("/{id}")
