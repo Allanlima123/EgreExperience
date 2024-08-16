@@ -1,9 +1,6 @@
 package main.root.model;
 
-import java.util.List;
-
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -18,14 +15,13 @@ import lombok.Data;
 public class Participacoes {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private String nome;
 	private String papel;
 
-	@ElementCollection
-	@Enumerated(EnumType.STRING)
-	private List<Nivel> nivel;
+    @Enumerated(EnumType.STRING)
+    private Nivel nivel;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
     private Projeto projeto;

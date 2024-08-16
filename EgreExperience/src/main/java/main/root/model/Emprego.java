@@ -14,7 +14,7 @@ import lombok.Data;
 public class Emprego {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 
 	private String empresa;
 	private Boolean remoto;

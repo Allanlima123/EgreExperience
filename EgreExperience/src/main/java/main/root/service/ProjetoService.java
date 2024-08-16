@@ -82,15 +82,15 @@ public class ProjetoService {
 //        return projetoRepository.save(projetoExistente);
 //    }
 //	
-//	public void deleteProjeto(long id) {
-//		try {
-//			if (projetoRepository.existsById(id)) {
-//				projetoRepository.deleteById(id);
-//			} else {
-//				throw new RuntimeException("Projeto não encontrado com o ID: " + id);
-//			}
-//		} catch (Exception e) {
-//			throw new RuntimeException("Falha ao deletar o Projeto com o ID: " + id, e);
-//		}
-//	}
+	public void deleteProjeto(long id) {
+		try {
+			if (projetoRepository.existsById(id)) {
+				projetoRepository.deleteById(id);
+			} else {
+				throw new RuntimeException("Projeto não encontrado com o ID: " + id);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao deletar o Projeto com o ID: " + id, e);
+		}
+	}
 }

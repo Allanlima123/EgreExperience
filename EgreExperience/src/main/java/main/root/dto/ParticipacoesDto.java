@@ -1,7 +1,5 @@
 package main.root.dto;
 
-import java.util.List;
-
 import lombok.Data;
 import main.root.model.Nivel;
 
@@ -9,6 +7,6 @@ import main.root.model.Nivel;
 public class ParticipacoesDto {
 	private String nome;
 	private String papel;
-	private List<Nivel> nivel;
+	private Nivel nivel;
 	private Long projetoId;
 }
