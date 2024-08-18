@@ -23,6 +23,7 @@ public class CursoController {
 	@Autowired
 	CursoService cursoService;
 	
+	
     @GetMapping
     public List<Curso> listarCursos() {
         return cursoService.listarCursos();
@@ -41,6 +42,11 @@ public class CursoController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+    
+    @GetMapping("/estudante/{id}")
+    public List<Curso> getProjetosPorEstudante(@PathVariable("id") Long estudanteId) {
+        return cursoService.buscarCursosPorEstudante(estudanteId);
     }
 	
     

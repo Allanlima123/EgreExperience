@@ -41,6 +41,12 @@ public class ParticipacoesController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    @GetMapping("/projeto/{id}")
+    public List<Participacoes> getProjetosPorProjetoId(@PathVariable("id") Long projetoId) {
+        return participacoesService.buscarParticipacoesPorProjetoId(projetoId);
+    }
+
 	
     
 //    @PutMapping("/{id}")

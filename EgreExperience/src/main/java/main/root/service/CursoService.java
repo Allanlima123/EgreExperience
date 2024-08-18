@@ -60,6 +60,10 @@ public class CursoService {
 		}
 	}
 
+	public List<Curso> buscarCursosPorEstudante(Long estudanteId) {
+		return cursoRepository.findByEstudanteId(estudanteId);
+	}
+
 //    public Curso atualizarCurso(long id, Curso cursoAtualizado) {
 //        if (!cursoRepository.existsById(id)) {
 //            throw new RuntimeException("Curso não encontrado com o ID: " + id);

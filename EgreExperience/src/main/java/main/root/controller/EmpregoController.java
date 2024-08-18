@@ -27,7 +27,6 @@ public class EmpregoController {
 		return empregoService.listarEmpregos();
 	}
 
-
 	@PostMapping
 	public Emprego addEmprego(@RequestBody EmpregoDto empregoDto) {
 		return empregoService.addEmprego(empregoDto);
@@ -42,6 +41,12 @@ public class EmpregoController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
+	@GetMapping("/estudante/{id}")
+	public List<Emprego> getEmpregosPorEstudante(@PathVariable("id") Long estudanteId) {
+		return empregoService.buscarEmpregosPorEstudante(estudanteId);
+	}
+	
 
 //    @PutMapping("/{id}")
 //    public ResponseEntity<Emprego> atualizarEmprego(

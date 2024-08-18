@@ -15,17 +15,17 @@ import main.root.repository.ProjetoRepository;
 public class ParticipacoesService {
 	@Autowired
 	ParticipacoesRepository participacoesRepository;
-	
+
 	@Autowired
 	ProjetoRepository projetoRepository;
 
-    public List<Participacoes> listarParticipacoess() {
-        try {
-            return participacoesRepository.findAll();
-        } catch (Exception e) {
-            throw new RuntimeException("Falha ao buscar todos os participacoess com participacoes", e);
-        }
-    }
+	public List<Participacoes> listarParticipacoess() {
+		try {
+			return participacoesRepository.findAll();
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao buscar todos os participacoess com participacoes", e);
+		}
+	}
 
 	public Participacoes buscarParticipacoesPorId(long id) {
 		try {
@@ -59,6 +59,9 @@ public class ParticipacoesService {
 		}
 	}
 
+	public List<Participacoes> buscarParticipacoesPorProjetoId(Long projetoId) {
+		return participacoesRepository.findByProjetoId(projetoId);
+	}
 
 //    public Participacoes atualizarParticipacoes(long id, Participacoes participacoesAtualizado) {
 //        if (!participacoesRepository.existsById(id)) {

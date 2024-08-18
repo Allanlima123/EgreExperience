@@ -59,6 +59,10 @@ public class EmpregoService {
 			throw new RuntimeException("Falha ao salvar o Emprego", e);
 		}
 	}
+	
+	public List<Emprego> buscarEmpregosPorEstudante(Long estudanteId) {
+		return empregoRepository.findByEstudanteId(estudanteId);
+	}
 
 //    public Emprego atualizarEmprego(long id, Emprego empregoAtualizado) {
 //        if (!empregoRepository.existsById(id)) {
