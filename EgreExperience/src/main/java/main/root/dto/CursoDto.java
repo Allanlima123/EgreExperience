@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class CursoDto {
 	private String nome;
+	private String universidade;
 	private String modalidade;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date anoInicio;

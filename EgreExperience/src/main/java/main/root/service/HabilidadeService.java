@@ -57,6 +57,10 @@ public class HabilidadeService {
 			throw new RuntimeException("Falha ao salvar o Habilidade", e);
 		}
 	}
+	
+	public List<Habilidade> buscarHabilidadesPorEstudante(Long estudanteId) {
+		return habilidadeRepository.findByEstudanteId(estudanteId);
+	}
 
 //    public Habilidade atualizarHabilidade(long id, Habilidade habilidadeAtualizado) {
 //        if (!habilidadeRepository.existsById(id)) {
@@ -75,15 +79,15 @@ public class HabilidadeService {
 //        return habilidadeRepository.save(habilidadeExistente);
 //    }
 //	
-//	public void deleteHabilidade(long id) {
-//		try {
-//			if (habilidadeRepository.existsById(id)) {
-//				habilidadeRepository.deleteById(id);
-//			} else {
-//				throw new RuntimeException("Habilidade não encontrado com o ID: " + id);
-//			}
-//		} catch (Exception e) {
-//			throw new RuntimeException("Falha ao deletar o Habilidade com o ID: " + id, e);
-//		}
-//	}
+	public void deleteHabilidade(Long id) {
+		try {
+			if (habilidadeRepository.existsById(id)) {
+				habilidadeRepository.deleteById(id);
+			} else {
+				throw new RuntimeException("Habilidade não encontrado com o ID: " + id);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao deletar o Habilidade com o ID: " + id, e);
+		}
+	}
 }

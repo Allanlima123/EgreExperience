@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,34 +22,32 @@ import main.root.service.ParticipacoesService;
 public class ParticipacoesController {
 	@Autowired
 	ParticipacoesService participacoesService;
-	
-    @GetMapping
-    public List<Participacoes> listarParticipacoess() {
-        return participacoesService.listarParticipacoess();
-    }
-    
-    @PostMapping
-    public Participacoes addParticipacoes(@RequestBody ParticipacoesDto participacoesDto) {
-        return participacoesService.addParticipacoes(participacoesDto);
-    }
-    
-    @GetMapping("/{id}")
-    public ResponseEntity<Participacoes> buscarParticipacoesPorId(@PathVariable int id) {
-        Participacoes participacoes = participacoesService.buscarParticipacoesPorId(id);
-        if (participacoes != null) {
-            return new ResponseEntity<>(participacoes, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-    
-    @GetMapping("/projeto/{id}")
-    public List<Participacoes> getProjetosPorProjetoId(@PathVariable("id") Long projetoId) {
-        return participacoesService.buscarParticipacoesPorProjetoId(projetoId);
-    }
 
-	
-    
+	@GetMapping
+	public List<Participacoes> listarParticipacoess() {
+		return participacoesService.listarParticipacoess();
+	}
+
+	@PostMapping
+	public Participacoes addParticipacoes(@RequestBody ParticipacoesDto participacoesDto) {
+		return participacoesService.addParticipacoes(participacoesDto);
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Participacoes> buscarParticipacoesPorId(@PathVariable Long id) {
+		Participacoes participacoes = participacoesService.buscarParticipacoesPorId(id);
+		if (participacoes != null) {
+			return new ResponseEntity<>(participacoes, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
+	@GetMapping("/projeto/{id}")
+	public List<Participacoes> getProjetosPorProjetoId(@PathVariable("id") Long projetoId) {
+		return participacoesService.buscarParticipacoesPorProjetoId(projetoId);
+	}
+
 //    @PutMapping("/{id}")
 //    public ResponseEntity<Participacoes> atualizarParticipacoes(
 //            @PathVariable int id,
@@ -63,9 +62,9 @@ public class ParticipacoesController {
 //        }
 //    }
 //    
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deletarParticipacoes(@PathVariable int id) {
-//    	participacoesService.deleteParticipacoes(id);
-//        return ResponseEntity.noContent().build();
-//    }
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deletarParticipacoes(@PathVariable Long id) {
+		participacoesService.deletarParticipacoes(id);
+		return ResponseEntity.noContent().build();
+	}
 }

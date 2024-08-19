@@ -81,15 +81,15 @@ public class EmpregoService {
 //        return empregoRepository.save(empregoExistente);
 //    }
 //	
-//	public void deleteEmprego(long id) {
-//		try {
-//			if (empregoRepository.existsById(id)) {
-//				empregoRepository.deleteById(id);
-//			} else {
-//				throw new RuntimeException("Emprego não encontrado com o ID: " + id);
-//			}
-//		} catch (Exception e) {
-//			throw new RuntimeException("Falha ao deletar o Emprego com o ID: " + id, e);
-//		}
-//	}
+	public void deleteEmprego(Long id) {
+		try {
+			if (empregoRepository.existsById(id)) {
+				empregoRepository.deleteById(id);
+			} else {
+				throw new RuntimeException("Emprego não encontrado com o ID: " + id);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao deletar o Emprego com o ID: " + id, e);
+		}
+	}
 }

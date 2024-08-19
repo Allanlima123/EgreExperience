@@ -80,15 +80,15 @@ public class ParticipacoesService {
 //        return participacoesRepository.save(participacoesExistente);
 //    }
 //	
-//	public void deleteParticipacoes(long id) {
-//		try {
-//			if (participacoesRepository.existsById(id)) {
-//				participacoesRepository.deleteById(id);
-//			} else {
-//				throw new RuntimeException("Participacoes não encontrado com o ID: " + id);
-//			}
-//		} catch (Exception e) {
-//			throw new RuntimeException("Falha ao deletar o Participacoes com o ID: " + id, e);
-//		}
-//	}
+	public void deletarParticipacoes(Long id) {
+		try {
+			if (participacoesRepository.existsById(id)) {
+				participacoesRepository.deleteById(id);
+			} else {
+				throw new RuntimeException("Participacoes não encontrado com o ID: " + id);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao deletar o Participacoes com o ID: " + id, e);
+		}
+	}
 }

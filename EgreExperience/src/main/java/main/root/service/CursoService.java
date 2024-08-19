@@ -43,6 +43,7 @@ public class CursoService {
 
 		Curso curso = new Curso();
 		curso.setNome(cursoDto.getNome());
+		curso.setUniversidade(cursoDto.getUniversidade());
 		curso.setModalidade(cursoDto.getModalidade());
 		curso.setAnoInicio(cursoDto.getAnoInicio());
 		curso.setAnoConclusao(cursoDto.getAnoConclusao());
@@ -81,15 +82,15 @@ public class CursoService {
 //        return cursoRepository.save(cursoExistente);
 //    }
 //	
-//	public void deleteCurso(long id) {
-//		try {
-//			if (cursoRepository.existsById(id)) {
-//				cursoRepository.deleteById(id);
-//			} else {
-//				throw new RuntimeException("Curso não encontrado com o ID: " + id);
-//			}
-//		} catch (Exception e) {
-//			throw new RuntimeException("Falha ao deletar o Curso com o ID: " + id, e);
-//		}
-//	}
+	public void deleteCurso(Long id) {
+		try {
+			if (cursoRepository.existsById(id)) {
+				cursoRepository.deleteById(id);
+			} else {
+				throw new RuntimeException("Curso não encontrado com o ID: " + id);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao deletar o Curso com o ID: " + id, e);
+		}
+	}
 }

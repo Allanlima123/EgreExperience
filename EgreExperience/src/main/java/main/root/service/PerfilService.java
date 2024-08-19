@@ -64,15 +64,15 @@ public class PerfilService {
 //        return perfilRepository.save(perfilExistente);
 //    }
 //	
-//	public void deletePerfil(long id) {
-//		try {
-//			if (perfilRepository.existsById(id)) {
-//				perfilRepository.deleteById(id);
-//			} else {
-//				throw new RuntimeException("Perfil não encontrado com o ID: " + id);
-//			}
-//		} catch (Exception e) {
-//			throw new RuntimeException("Falha ao deletar o Perfil com o ID: " + id, e);
-//		}
-//	}
+	public void deletePerfil(Long id) {
+		try {
+			if (perfilRepository.existsById(id)) {
+				perfilRepository.deleteById(id);
+			} else {
+				throw new RuntimeException("Perfil não encontrado com o ID: " + id);
+			}
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao deletar o Perfil com o ID: " + id, e);
+		}
+	}
 }

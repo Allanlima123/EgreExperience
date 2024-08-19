@@ -20,6 +20,7 @@ public class Curso {
 	private Long id;
 
 	private String nome;
+	private String universidade;
 	private String modalidade;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")

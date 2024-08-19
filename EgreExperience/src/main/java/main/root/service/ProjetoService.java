@@ -83,7 +83,7 @@ public class ProjetoService {
 //        return projetoRepository.save(projetoExistente);
 //    }
 //	
-	public void deleteProjeto(long id) {
+	public void deleteProjeto(Long id) {
 		try {
 			if (projetoRepository.existsById(id)) {
 				projetoRepository.deleteById(id);
