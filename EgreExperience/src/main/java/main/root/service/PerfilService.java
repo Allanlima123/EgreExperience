@@ -47,23 +47,20 @@ public class PerfilService {
 		}
 	}
 
-//    public Perfil atualizarPerfil(long id, Perfil perfilAtualizado) {
-//        if (!perfilRepository.existsById(id)) {
-//            throw new RuntimeException("Perfil não encontrado com o ID: " + id);
-//        }
-//
-//        Perfil perfilExistente = perfilRepository.findById(id)
-//            .orElseThrow(() -> new RuntimeException("Perfil não encontrado com o ID: " + id));
-//
-//        perfilExistente.setNome(perfilAtualizado.getNome());
-//        perfilExistente.setModalidade(perfilAtualizado.getModalidade());
-//        perfilExistente.setAnoInicio(perfilAtualizado.getAnoInicio());
-//        perfilExistente.setAnoConclusao(perfilAtualizado.getAnoConclusao());
-//        perfilExistente.setCh(perfilAtualizado.getCh());
-//
-//        return perfilRepository.save(perfilExistente);
-//    }
-//	
+	public Perfil atualizarPerfil(long id, PerfilDto perfilDto) {
+		if (!perfilRepository.existsById(id)) {
+			throw new RuntimeException("Perfil não encontrado com o ID: " + id);
+		}
+
+		Perfil perfilExistente = perfilRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Perfil não encontrado com o ID: " + id));
+
+		perfilExistente.setEmail(perfilDto.getEmail());
+		perfilExistente.setPassword(perfilDto.getPassword());
+
+		return perfilRepository.save(perfilExistente);
+	}
+
 	public void deletePerfil(Long id) {
 		try {
 			if (perfilRepository.existsById(id)) {

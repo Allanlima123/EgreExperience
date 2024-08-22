@@ -28,6 +28,7 @@ public class Estudante {
 	private String foto;
 	private String nome;
 	private String cargoAtual;
+	private String descricaoTecnica;
 
 	@ElementCollection
 	@Enumerated(EnumType.STRING)

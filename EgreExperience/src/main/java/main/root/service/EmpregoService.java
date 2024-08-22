@@ -15,7 +15,7 @@ import main.root.repository.EstudanteRepository;
 public class EmpregoService {
 	@Autowired
 	EmpregoRepository empregoRepository;
-	
+
 	@Autowired
 	EstudanteRepository estudanteRepository;
 
@@ -59,28 +59,28 @@ public class EmpregoService {
 			throw new RuntimeException("Falha ao salvar o Emprego", e);
 		}
 	}
-	
+
 	public List<Emprego> buscarEmpregosPorEstudante(Long estudanteId) {
 		return empregoRepository.findByEstudanteId(estudanteId);
 	}
 
-//    public Emprego atualizarEmprego(long id, Emprego empregoAtualizado) {
-//        if (!empregoRepository.existsById(id)) {
-//            throw new RuntimeException("Emprego não encontrado com o ID: " + id);
-//        }
-//
-//        Emprego empregoExistente = empregoRepository.findById(id)
-//            .orElseThrow(() -> new RuntimeException("Emprego não encontrado com o ID: " + id));
-//
-//        empregoExistente.setNome(empregoAtualizado.getNome());
-//        empregoExistente.setModalidade(empregoAtualizado.getModalidade());
-//        empregoExistente.setAnoInicio(empregoAtualizado.getAnoInicio());
-//        empregoExistente.setAnoConclusao(empregoAtualizado.getAnoConclusao());
-//        empregoExistente.setCh(empregoAtualizado.getCh());
-//
-//        return empregoRepository.save(empregoExistente);
-//    }
-//	
+	public Emprego atualizarEmprego(long id, EmpregoDto empregoDto) {
+		if (!empregoRepository.existsById(id)) {
+			throw new RuntimeException("Emprego não encontrado com o ID: " + id);
+		}
+
+		Emprego empregoExistente = empregoRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Emprego não encontrado com o ID: " + id));
+
+		empregoExistente.setEmpresa(empregoDto.getEmpresa());
+		empregoExistente.setRemoto(empregoDto.getRemoto());
+		empregoExistente.setCargo(empregoDto.getCargo());
+		empregoExistente.setTempo(empregoDto.getTempo());
+		empregoExistente.setDescricaoProficional(empregoDto.getDescricaoProficional());
+
+		return empregoRepository.save(empregoExistente);
+	}
+
 	public void deleteEmprego(Long id) {
 		try {
 			if (empregoRepository.existsById(id)) {

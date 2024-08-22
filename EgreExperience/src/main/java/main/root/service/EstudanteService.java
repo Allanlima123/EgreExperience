@@ -48,6 +48,7 @@ public class EstudanteService {
 	    estudante.setAnoFormacao(estudanteDto.getAnoFormacao());
 	    estudante.setFoto(estudanteDto.getFoto());
 	    estudante.setNome(estudanteDto.getNome());
+	    estudante.setDescricaoTecnica(estudanteDto.getDescricaoTecnica());
 	    estudante.setCargoAtual(estudanteDto.getCargoAtual());
 	    estudante.setIdiomas(estudanteDto.getIdiomas());
 	    estudante.setPerfil(perfil);

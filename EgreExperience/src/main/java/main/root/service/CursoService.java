@@ -65,23 +65,24 @@ public class CursoService {
 		return cursoRepository.findByEstudanteId(estudanteId);
 	}
 
-//    public Curso atualizarCurso(long id, Curso cursoAtualizado) {
-//        if (!cursoRepository.existsById(id)) {
-//            throw new RuntimeException("Curso não encontrado com o ID: " + id);
-//        }
-//
-//        Curso cursoExistente = cursoRepository.findById(id)
-//            .orElseThrow(() -> new RuntimeException("Curso não encontrado com o ID: " + id));
-//
-//        cursoExistente.setNome(cursoAtualizado.getNome());
-//        cursoExistente.setModalidade(cursoAtualizado.getModalidade());
-//        cursoExistente.setAnoInicio(cursoAtualizado.getAnoInicio());
-//        cursoExistente.setAnoConclusao(cursoAtualizado.getAnoConclusao());
-//        cursoExistente.setCh(cursoAtualizado.getCh());
-//
-//        return cursoRepository.save(cursoExistente);
-//    }
-//	
+    public Curso atualizarCurso(long id, CursoDto cursoDto) {
+        if (!cursoRepository.existsById(id)) {
+            throw new RuntimeException("Curso não encontrado com o ID: " + id);
+        }
+
+        Curso cursoExistente = cursoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Curso não encontrado com o ID: " + id));
+
+        cursoExistente.setNome(cursoDto.getNome());
+        cursoExistente.setUniversidade(cursoDto.getUniversidade());
+        cursoExistente.setModalidade(cursoDto.getModalidade());
+        cursoExistente.setAnoInicio(cursoDto.getAnoInicio());
+        cursoExistente.setAnoConclusao(cursoDto.getAnoConclusao());
+        cursoExistente.setCh(cursoDto.getCh());
+
+        return cursoRepository.save(cursoExistente);
+    }
+	
 	public void deleteCurso(Long id) {
 		try {
 			if (cursoRepository.existsById(id)) {

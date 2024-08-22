@@ -1,7 +1,5 @@
 package main.root.dto;
 
-import java.util.List;
-
 import lombok.Data;
 import main.root.model.Nivel;
 
@@ -9,6 +7,6 @@ import main.root.model.Nivel;
 public class HabilidadeDto {
 	private String nome;
 	private String descricaoTecnica;
-	private List<Nivel> nivel;
+	private Nivel nivel;
 	private Long estudanteId;
 }

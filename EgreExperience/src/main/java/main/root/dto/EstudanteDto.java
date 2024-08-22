@@ -15,6 +15,7 @@ public class EstudanteDto {
 
 	private String foto;
 	private String nome;
+	private String descricaoTecnica;
 	private String cargoAtual;
 	private List<Idioma> idiomas;
 	private Long perfilId;

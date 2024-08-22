@@ -15,17 +15,17 @@ import main.root.repository.ProjetoRepository;
 public class ProjetoService {
 	@Autowired
 	ProjetoRepository projetoRepository;
-	
+
 	@Autowired
 	private EstudanteRepository estudanteRepository;
 
-    public List<Projeto> listarProjetos() {
-        try {
-            return projetoRepository.findAll();
-        } catch (Exception e) {
-            throw new RuntimeException("Falha ao buscar todos os projetos com projeto", e);
-        }
-    }
+	public List<Projeto> listarProjetos() {
+		try {
+			return projetoRepository.findAll();
+		} catch (Exception e) {
+			throw new RuntimeException("Falha ao buscar todos os projetos com projeto", e);
+		}
+	}
 
 	public Projeto buscarProjetoPorId(long id) {
 		try {
@@ -35,7 +35,7 @@ public class ProjetoService {
 			throw new RuntimeException("Falha ao buscar projeto com o ID: " + id, e);
 		}
 	}
-	
+
 	public Projeto addProjeto(ProjetoDto projetoDto) {
 		if (projetoDto == null) {
 			throw new IllegalArgumentException("O DTO do curso não pode ser nulo.");
@@ -47,7 +47,7 @@ public class ProjetoService {
 		projeto.setAnoInicio(projetoDto.getAnoInicio());
 		projeto.setAnoConclusao(projetoDto.getAnoConclusao());
 		projeto.setCidadeAtual(projetoDto.getCidadeAtual());
-		
+
 		Estudante estudante = estudanteRepository.findById(projetoDto.getEstudanteId()).orElseThrow(
 				() -> new RuntimeException("Estudante com ID " + projetoDto.getEstudanteId() + " não encontrado."));
 
@@ -59,30 +59,28 @@ public class ProjetoService {
 			throw new RuntimeException("Falha ao salvar o Curso", e);
 		}
 	}
-	
-    public List<Projeto> buscarProjetosPorEstudante(Long estudanteId) {
-        return projetoRepository.findByEstudanteId(estudanteId);
-    }
-   
 
+	public List<Projeto> buscarProjetosPorEstudante(Long estudanteId) {
+		return projetoRepository.findByEstudanteId(estudanteId);
+	}
 
-//    public Projeto atualizarProjeto(long id, Projeto projetoAtualizado) {
-//        if (!projetoRepository.existsById(id)) {
-//            throw new RuntimeException("Projeto não encontrado com o ID: " + id);
-//        }
-//
-//        Projeto projetoExistente = projetoRepository.findById(id)
-//            .orElseThrow(() -> new RuntimeException("Projeto não encontrado com o ID: " + id));
-//
-//        projetoExistente.setNome(projetoAtualizado.getNome());
-//        projetoExistente.setModalidade(projetoAtualizado.getModalidade());
-//        projetoExistente.setAnoInicio(projetoAtualizado.getAnoInicio());
-//        projetoExistente.setAnoConclusao(projetoAtualizado.getAnoConclusao());
-//        projetoExistente.setCh(projetoAtualizado.getCh());
-//
-//        return projetoRepository.save(projetoExistente);
-//    }
-//	
+	public Projeto atualizarProjeto(long id, ProjetoDto projetoDto) {
+		if (!projetoRepository.existsById(id)) {
+			throw new RuntimeException("Projeto não encontrado com o ID: " + id);
+		}
+
+		Projeto projetoExistente = projetoRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Projeto não encontrado com o ID: " + id));
+
+		projetoExistente.setNome(projetoDto.getNome());
+		projetoExistente.setDescricao(projetoDto.getDescricao());
+		projetoExistente.setAnoInicio(projetoDto.getAnoInicio());
+		projetoExistente.setAnoConclusao(projetoDto.getAnoConclusao());
+		projetoExistente.setCidadeAtual(projetoDto.getCidadeAtual());
+
+		return projetoRepository.save(projetoExistente);
+	}
+
 	public void deleteProjeto(Long id) {
 		try {
 			if (projetoRepository.existsById(id)) {

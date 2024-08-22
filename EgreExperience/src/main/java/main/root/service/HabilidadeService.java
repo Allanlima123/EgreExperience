@@ -43,8 +43,6 @@ public class HabilidadeService {
 
 		Habilidade habilidade = new Habilidade();
 		habilidade.setNome(habilidadeDto.getNome());
-		habilidade.setDescricaoTecnica(habilidadeDto.getDescricaoTecnica());
-		habilidade.setNivel(habilidadeDto.getNivel());
 
 		Estudante estudante = estudanteRepository.findById(habilidadeDto.getEstudanteId()).orElseThrow(
 				() -> new RuntimeException("Estudante com ID " + habilidadeDto.getEstudanteId() + " não encontrado."));
@@ -57,28 +55,24 @@ public class HabilidadeService {
 			throw new RuntimeException("Falha ao salvar o Habilidade", e);
 		}
 	}
-	
+
 	public List<Habilidade> buscarHabilidadesPorEstudante(Long estudanteId) {
 		return habilidadeRepository.findByEstudanteId(estudanteId);
 	}
 
-//    public Habilidade atualizarHabilidade(long id, Habilidade habilidadeAtualizado) {
-//        if (!habilidadeRepository.existsById(id)) {
-//            throw new RuntimeException("Habilidade não encontrado com o ID: " + id);
-//        }
-//
-//        Habilidade habilidadeExistente = habilidadeRepository.findById(id)
-//            .orElseThrow(() -> new RuntimeException("Habilidade não encontrado com o ID: " + id));
-//
-//        habilidadeExistente.setNome(habilidadeAtualizado.getNome());
-//        habilidadeExistente.setModalidade(habilidadeAtualizado.getModalidade());
-//        habilidadeExistente.setAnoInicio(habilidadeAtualizado.getAnoInicio());
-//        habilidadeExistente.setAnoConclusao(habilidadeAtualizado.getAnoConclusao());
-//        habilidadeExistente.setCh(habilidadeAtualizado.getCh());
-//
-//        return habilidadeRepository.save(habilidadeExistente);
-//    }
-//	
+	public Habilidade atualizarHabilidade(long id, HabilidadeDto habilidadeDto) {
+		if (!habilidadeRepository.existsById(id)) {
+			throw new RuntimeException("Habilidade não encontrado com o ID: " + id);
+		}
+
+		Habilidade habilidadeExistente = habilidadeRepository.findById(id)
+				.orElseThrow(() -> new RuntimeException("Habilidade não encontrado com o ID: " + id));
+
+		habilidadeExistente.setNome(habilidadeDto.getNome());
+
+		return habilidadeRepository.save(habilidadeExistente);
+	}
+
 	public void deleteHabilidade(Long id) {
 		try {
 			if (habilidadeRepository.existsById(id)) {

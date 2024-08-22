@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,20 +50,22 @@ public class EmpregoController {
 	}
 	
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Emprego> atualizarEmprego(
-//            @PathVariable int id,
-//            @RequestBody Emprego empregoAtualizado) {
-//        try {
-//            Emprego emprego = empregoService.atualizarEmprego(id, empregoAtualizado);
-//            return ResponseEntity.ok(emprego);
-//        } catch (RuntimeException e) {
-//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-//        }
-//    }
-//    
+    @PutMapping("/{id}")
+    public ResponseEntity<Emprego> atualizarEmprego(
+            @PathVariable int id,
+            @RequestBody EmpregoDto empregoDto) {
+        try {
+            Emprego emprego = empregoService.atualizarEmprego(id, empregoDto);
+            return ResponseEntity.ok(emprego);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+    
+
+ 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarEmprego(@PathVariable Long id) {
     	empregoService.deleteEmprego(id);

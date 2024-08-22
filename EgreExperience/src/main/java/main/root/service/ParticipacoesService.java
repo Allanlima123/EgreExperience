@@ -63,23 +63,21 @@ public class ParticipacoesService {
 		return participacoesRepository.findByProjetoId(projetoId);
 	}
 
-//    public Participacoes atualizarParticipacoes(long id, Participacoes participacoesAtualizado) {
-//        if (!participacoesRepository.existsById(id)) {
-//            throw new RuntimeException("Participacoes não encontrado com o ID: " + id);
-//        }
-//
-//        Participacoes participacoesExistente = participacoesRepository.findById(id)
-//            .orElseThrow(() -> new RuntimeException("Participacoes não encontrado com o ID: " + id));
-//
-//        participacoesExistente.setNome(participacoesAtualizado.getNome());
-//        participacoesExistente.setModalidade(participacoesAtualizado.getModalidade());
-//        participacoesExistente.setAnoInicio(participacoesAtualizado.getAnoInicio());
-//        participacoesExistente.setAnoConclusao(participacoesAtualizado.getAnoConclusao());
-//        participacoesExistente.setCh(participacoesAtualizado.getCh());
-//
-//        return participacoesRepository.save(participacoesExistente);
-//    }
-//	
+    public Participacoes atualizarParticipacoes(long id, ParticipacoesDto participacoesDto) {
+        if (!participacoesRepository.existsById(id)) {
+            throw new RuntimeException("Participacoes não encontrado com o ID: " + id);
+        }
+
+        Participacoes participacoesExistente = participacoesRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Participacoes não encontrado com o ID: " + id));
+
+        participacoesExistente.setNome(participacoesDto.getNome());
+        participacoesExistente.setPapel(participacoesDto.getPapel());
+        participacoesExistente.setNivel(participacoesDto.getNivel());
+
+        return participacoesRepository.save(participacoesExistente);
+    }
+	
 	public void deletarParticipacoes(Long id) {
 		try {
 			if (participacoesRepository.existsById(id)) {
