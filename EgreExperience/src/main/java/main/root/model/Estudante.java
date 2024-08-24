@@ -33,6 +33,10 @@ public class Estudante {
 	@ElementCollection
 	@Enumerated(EnumType.STRING)
 	private List<Idioma> idiomas;
+	
+	@ElementCollection
+	@Enumerated(EnumType.STRING)
+	private List<Habilidade> habilidades;
 
 	@ManyToOne
 	private Perfil perfil;

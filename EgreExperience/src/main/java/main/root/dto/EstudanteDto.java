@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Data;
+import main.root.model.Habilidade;
 import main.root.model.Idioma;
 
 @Data
@@ -17,6 +18,7 @@ public class EstudanteDto {
 	private String nome;
 	private String descricaoTecnica;
 	private String cargoAtual;
+	private List<Habilidade> habilidades;
 	private List<Idioma> idiomas;
 	private Long perfilId;
 }

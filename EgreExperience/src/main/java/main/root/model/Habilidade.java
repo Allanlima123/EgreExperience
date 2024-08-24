@@ -1,23 +1,35 @@
 package main.root.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import lombok.Data;
-
-@Data
-@Entity
-public class Habilidade {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	private String nome;
-
-	@ManyToOne(cascade = CascadeType.ALL)
-	private Estudante estudante;
-
+public enum Habilidade {
+	    PROGRAMACAO_JAVA,
+	    DESENVOLVIMENTO_WEB,
+	    ANALISE_DE_DADOS,
+	    SEGURANCA_CIBERNETICA,
+	    ADMINISTRACAO_BANCO_DE_DADOS,
+	    INTELIGENCIA_ARTIFICIAL,
+	    DESIGN_GRAFICO,
+	    UX_UI,
+	    FOTOGRAFIA,
+	    ANIMACAO_2D_3D,
+	    DESIGN_DE_INTERIORES,
+	    ENGENHARIA_CIVIL,
+	    ENGENHARIA_ELETRICA,
+	    ENGENHARIA_MECANICA,
+	    ENGENHARIA_DE_SOFTWARE,
+	    GESTAO_DE_PROJETOS,
+	    ENFERMAGEM,
+	    FISIOTERAPIA,
+	    NUTRICAO,
+	    MEDICINA,
+	    FARMACIA,
+	    CONTABILIDADE,
+	    GESTAO_DE_RECURSOS_HUMANOS,
+	    MARKETING_DIGITAL,
+	    PLANEJAMENTO_ESTRATEGICO,
+	    FINANCAS_CORPORATIVAS,
+	    DOCENCIA,
+	    ORIENTACAO_PEDAGOGICA,
+	    DESENVOLVIMENTO_CURRICULAR,
+	    PSICOPEDAGOGIA,
+	    COORDENACAO_ESCOLAR
 }

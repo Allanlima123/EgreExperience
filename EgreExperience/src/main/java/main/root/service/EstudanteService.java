@@ -51,6 +51,7 @@ public class EstudanteService {
 	    estudante.setDescricaoTecnica(estudanteDto.getDescricaoTecnica());
 	    estudante.setCargoAtual(estudanteDto.getCargoAtual());
 	    estudante.setIdiomas(estudanteDto.getIdiomas());
+	    estudante.setHabilidades(estudanteDto.getHabilidades());
 	    estudante.setPerfil(perfil);
 
 	    try {
