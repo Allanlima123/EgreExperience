@@ -89,4 +89,8 @@ public class ParticipacoesService {
 			throw new RuntimeException("Falha ao deletar o Participacoes com o ID: " + id, e);
 		}
 	}
+
+//	public Participacoes buscarParticipacoesPorIdProjeto(Long id) {
+//		return participacoesRepository.findByProjetoId(projetoId);
+//	}
 }

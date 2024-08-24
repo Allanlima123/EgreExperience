@@ -23,6 +23,6 @@ public class Participacoes {
     @Enumerated(EnumType.STRING)
     private Nivel nivel;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
     private Projeto projeto;
 }

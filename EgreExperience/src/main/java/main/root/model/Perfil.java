@@ -13,6 +13,8 @@ public class Perfil {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	private String nome;
+	private String sobreNome;
 	private String email;
 	private String password;
 }

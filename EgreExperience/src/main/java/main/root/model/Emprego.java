@@ -24,6 +24,6 @@ public class Emprego {
 	@Column(length = 500)
 	private String descricaoProficional;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Estudante estudante;
 }

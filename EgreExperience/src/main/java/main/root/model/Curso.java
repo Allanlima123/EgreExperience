@@ -31,6 +31,6 @@ public class Curso {
 	
 	private long ch;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Estudante estudante;
 }

@@ -30,7 +30,7 @@ public class Projeto {
 
 	private String cidadeAtual;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Estudante estudante;
 
 }

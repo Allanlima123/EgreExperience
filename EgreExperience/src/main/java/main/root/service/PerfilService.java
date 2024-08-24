@@ -37,6 +37,8 @@ public class PerfilService {
 		}
 
 		Perfil perfil = new Perfil();
+		perfil.setNome(perfilDto.getNome());
+		perfil.setSobreNome(perfilDto.getSobreNome());
 		perfil.setEmail(perfilDto.getEmail());
 		perfil.setPassword(perfilDto.getPassword());
 
@@ -55,6 +57,8 @@ public class PerfilService {
 		Perfil perfilExistente = perfilRepository.findById(id)
 				.orElseThrow(() -> new RuntimeException("Perfil não encontrado com o ID: " + id));
 
+		perfilExistente.setNome(perfilDto.getNome());
+		perfilExistente.setSobreNome(perfilDto.getSobreNome());
 		perfilExistente.setEmail(perfilDto.getEmail());
 		perfilExistente.setPassword(perfilDto.getPassword());
 
