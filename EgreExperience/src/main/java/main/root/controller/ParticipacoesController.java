@@ -33,16 +33,6 @@ public class ParticipacoesController {
 	public Participacoes addParticipacoes(@RequestBody ParticipacoesDto participacoesDto) {
 		return participacoesService.addParticipacoes(participacoesDto);
 	}
-	
-//	@GetMapping("/{id}")
-//	public ResponseEntity<Participacoes> buscarParticipacoesPorIdProjeto(@PathVariable Long id) {
-//		Participacoes participacoes = participacoesService.buscarParticipacoesPorIdProjeto(id);
-//		if (participacoes != null) {
-//			return new ResponseEntity<>(participacoes, HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//		}
-//	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Participacoes> buscarParticipacoesPorId(@PathVariable Long id) {
