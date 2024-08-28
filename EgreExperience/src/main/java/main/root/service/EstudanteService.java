@@ -60,6 +60,24 @@ public class EstudanteService {
 	        throw new RuntimeException("Falha ao salvar o Estudante", e);
 	    }
 	}
+	
+    public Estudante atualizarEstudante(long id, EstudanteDto estudanteDto) {
+        if (!estudanteRepository.existsById(id)) {
+            throw new RuntimeException("Estudante não encontrado com o ID: " + id);
+        }
+
+        Estudante estudanteExistente = estudanteRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Estudante não encontrado com o ID: " + id));
+
+        estudanteExistente.setFoto(estudanteDto.getFoto());
+        estudanteExistente.setNome(estudanteDto.getNome());
+        estudanteExistente.setDescricaoTecnica(estudanteDto.getDescricaoTecnica());
+        estudanteExistente.setCargoAtual(estudanteDto.getCargoAtual());
+        estudanteExistente.setHabilidades(estudanteDto.getHabilidades());
+        estudanteExistente.setIdiomas(estudanteDto.getIdiomas());
+
+        return estudanteRepository.save(estudanteExistente);
+    }
 
 
 }
